@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro OS Cursors</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #c0c0c0 0%, #dfdfdf 100%);
+            font-family: 'MS Sans Serif', Arial, sans-serif;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .title {
+            background: linear-gradient(90deg, #000080 0%, #1084d7 100%);
+            color: white;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-shadow: inset 1px 1px 0 rgba(255,255,255,0.5), inset -1px -1px 0 rgba(0,0,0,0.5);
+        }
+
+        .title h1 {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .cursor-item {
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #dfdfdf #808080 #808080 #dfdfdf;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: inset 1px 1px 0 rgba(255,255,255,1), inset -1px -1px 0 rgba(0,0,0,0.25);
+            transition: all 0.1s;
+        }
+
+        .cursor-item:hover {
+            background: #dfdfdf;
+        }
+
+        .cursor-item:active {
+            border-color: #808080 #dfdfdf #dfdfdf #808080;
+            box-shadow: inset 1px 1px 0 rgba(0,0,0,0.25), inset -1px -1px 0 rgba(255,255,255,1);
+        }
+
+        .cursor-preview {
+            font-size: 48px;
+            margin-bottom: 10px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cursor-name {
+            font-size: 11px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 4px;
+        }
+
+        .cursor-desc {
+            font-size: 9px;
+            color: #666;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 20px 0 10px 0;
+            color: #000;
+            text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+        }
+
+        .demo-area {
+            background: white;
+            border: 2px solid;
+            border-color: #808080 #dfdfdf #dfdfdf #808080;
+            padding: 20px;
+            margin-bottom: 20px;
+            min-height: 200px;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        .code-block {
+            background: #000;
+            color: #0f0;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            margin-top: 10px;
+            border: 2px solid;
+            border-color: #808080 #dfdfdf #dfdfdf #808080;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>🖱️ Retro OS Cursors Collection</h1>
+        </div>
+
+        <div class="section-title">Classic Pointer Cursors</div>
+        <div class="grid">
+            <div class="cursor-item">
+                <div class="cursor-preview">👆</div>
+                <div class="cursor-name">Normal</div>
+                <div class="cursor-desc">Default pointer</div>
+            </div>
+            <div class="cursor-item">
+                <div class="cursor-preview">☝️</div>
+                <div class="cursor-name">Link</div>
+                <div class="cursor-desc">Pointing hand</div>
+            </div>
+            <div class="cursor-item">
+                <div class="cursor-preview">✋</div>
+                <div class="cursor-name">Wait</div>
+                <div class="cursor-desc">Wait/loading</div>
+            </div>
+            <div class="cursor-item">
+                <div class="cursor-preview">⏳</div>
+                <div class="cursor-name">Busy</div>
+                <div class="cursor-desc">Hourglass</div>
+            </div>
+            <div class="cursor-item">
+                <div class="cursor-preview">❌</div>
+                <div class="cursor-name">Not Allowed</div>
+                <div class="cursor-desc">No symbol</div>
+            </div>
+            <div class="cursor-item">
+                <div class="cursor-preview">❓</div>
+                <div class="cursor-name">Help</div>
+                <div class="cursor-desc">Question mark</div>
+            </div>
+        </div>
+
+        <div class="section-title">Resize & Move Cursors</div>
+        <div class="grid">
+            <div class="cursor-item">
+                <div class="cursor-preview">↔️</div>
+                <div class="cursor-name">Resize H</div>
+                <div class="cursor-desc">Horizontal resize</div>
+            </div>
+            <div class="cursor-item">
+                <div class="cursor-preview">↕️</div>
+                <div class="cursor-name">Resize V</div>
+                <div class="cursor-desc">Vertical resize</div>
+            </div>
+            <div class="cursor-item">
+                <div class="cursor-preview">↖️</div>
+                <div class="cursor-name">Resize NW</div>
+                <div class="cursor-desc">Northwest diagonal</div>
+            </div>
+            <div class="cursor-item">
+                <div class="cursor-preview">↗️</div>
+                <div class="cursor-name">Resize NE</div>
+                <div class="cursor-desc">Northeast diagonal</div>
+            </div>
+            <div class="cursor-item">
+                <div class="cursor-preview">⬆️</div>
+                <div class="cursor-name">Move</div>
+                <div class="cursor-desc">4-way move</div>
+            </div>
+            <div class="cursor-item">
+                <div class="cursor-preview">🔗</div>
+                <div class="cursor-name">Crosshair</div>
+                <div class="cursor-desc">Precision cursor</div>
+            </div>
+        </div>
+
+        <div class="section-title">Selection & Editing</div>
+        <div class="grid">
+            <div class="cursor-item">
+                <div class="cursor-preview">📝</div>
+                <div class="cursor-name">Text</div>
+                <div class="cursor-desc">I-beam text cursor</div>
+            </div>
+            <div class="cursor-item">
+                <div class="cursor-preview">🔨</div>
+                <div class="cursor-name">Copy</div>
+                <div class="cursor-desc">Copy operation</div>
+            </div>
+            <div class="cursor-item">
+                <div class="cursor-preview">✂️</div>
+                <div class="cursor-name">Move</div>
+                <div class="cursor-desc">Move/grab</div>
+            </div>
+            <div class="cursor-item">
+                <div class="cursor-preview">🎯</div>
+                <div class="cursor-name">Target</div>
+                <div class="cursor-desc">Selection tool</div>
+            </div>
+            <div class="cursor-item">
+                <div class="cursor-preview">🖍️</div>
+                <div class="cursor-name">Draw</div>
+                <div class="cursor-desc">Drawing tool</div>
+            </div>
+            <div class="cursor-item">
+                <div class="cursor-preview">🔍</div>
+                <div class="cursor-name">Zoom</div>
+                <div class="cursor-desc">Magnifying glass</div>
+            </div>
+        </div>
+
+        <div class="section-title">CSS Cursor Implementation Example</div>
+        <div class="demo-area">
+            <p>Here are some cursors in action:</p>
+            <p style="cursor: pointer;">🖱️ Pointer cursor</p>
+            <p style="cursor: text;">📝 Text selection cursor</p>
+            <p style="cursor: wait;">⏳ Wait cursor</p>
+            <p style="cursor: help;">❓ Help cursor</p>
+            <p style="cursor: move;">↔️ Move cursor</p>
+            <p style="cursor: not-allowed;">❌ Not-allowed cursor</p>
+            
+            <div class="code-block">
+CSS cursor properties:
+- pointer: for clickable elements
+- text: for text selection areas
+- wait: for loading states
+- move: for draggable elements
+- resize: for resize handles
+- not-allowed: for disabled actions
+            </div>
+        </div>
+    </div>
+</body>
+</html>
