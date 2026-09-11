@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro OS Windows UI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #008080 0%, #00aa00 100%);
+            font-family: 'MS Sans Serif', Arial, sans-serif;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .demo-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .window {
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #dfdfdf #808080 #808080 #dfdfdf;
+            box-shadow: inset 1px 1px 0 rgba(255,255,255,1), inset -1px -1px 0 rgba(0,0,0,0.25);
+            margin-bottom: 20px;
+            max-width: 500px;
+        }
+
+        .titlebar {
+            background: linear-gradient(90deg, #000080 0%, #1084d7 100%);
+            color: white;
+            padding: 2px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 20px;
+        }
+
+        .titlebar-text {
+            padding: 0 2px;
+            font-size: 11px;
+            font-weight: bold;
+            flex-grow: 1;
+        }
+
+        .window-buttons {
+            display: flex;
+            gap: 2px;
+            margin-right: 2px;
+        }
+
+        .window-button {
+            width: 16px;
+            height: 14px;
+            background: #c0c0c0;
+            border: 1px solid;
+            border-color: #dfdfdf #808080 #808080 #dfdfdf;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 0;
+        }
+
+        .window-button:active {
+            border-color: #808080 #dfdfdf #dfdfdf #808080;
+        }
+
+        .window-content {
+            padding: 6px;
+            background: #c0c0c0;
+            font-size: 11px;
+        }
+
+        .menubar {
+            background: #c0c0c0;
+            border-bottom: 2px solid;
+            border-color: #dfdfdf #808080 #808080 #dfdfdf;
+            display: flex;
+            gap: 10px;
+            padding: 2px;
+            font-size: 11px;
+        }
+
+        .menu-item {
+            padding: 4px 6px;
+            cursor: pointer;
+        }
+
+        .menu-item:active {
+            background: #000080;
+            color: white;
+        }
+
+        .button {
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #dfdfdf #808080 #808080 #dfdfdf;
+            padding: 4px 12px;
+            cursor: pointer;
+            font-size: 11px;
+            font-family: 'MS Sans Serif', Arial, sans-serif;
+            min-width: 75px;
+            transition: all 0.05s;
+        }
+
+        .button:active {
+            border-color: #808080 #dfdfdf #dfdfdf #808080;
+            box-shadow: inset 1px 1px 0 rgba(0,0,0,0.25), inset -1px -1px 0 rgba(255,255,255,1);
+        }
+
+        .button:hover {
+            background: #dfdfdf;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 6px;
+            margin-top: 10px;
+            justify-content: flex-end;
+        }
+
+        .input-field {
+            background: white;
+            border: 2px solid;
+            border-color: #808080 #dfdfdf #dfdfdf #808080;
+            padding: 3px 4px;
+            font-size: 11px;
+            font-family: 'MS Sans Serif', Arial, sans-serif;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 20px 0 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .checkbox-box {
+            width: 12px;
+            height: 12px;
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #808080 #dfdfdf #dfdfdf #808080;
+        }
+
+        .checkbox-box.checked {
+            background: white;
+            position: relative;
+        }
+
+        .checkbox-box.checked::after {
+            content: '✓';
+            position: absolute;
+            font-size: 10px;
+            font-weight: bold;
+            color: #000080;
+            top: -2px;
+            left: 1px;
+        }
+
+        .radiobutton {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .radio-circle {
+            width: 12px;
+            height: 12px;
+            border: 2px solid;
+            border-color: #808080 #dfdfdf #dfdfdf #808080;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .radio-circle.selected::after {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: #000080;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .separator {
+            height: 2px;
+            background: linear-gradient(90deg, #dfdfdf 0%, #808080 100%);
+            margin: 6px 0;
+        }
+
+        .status-bar {
+            background: #c0c0c0;
+            border-top: 2px solid;
+            border-color: #dfdfdf #808080 #808080 #dfdfdf;
+            padding: 2px;
+            font-size: 11px;
+            display: flex;
+            gap: 2px;
+        }
+
+        .status-item {
+            flex: 1;
+            border: 2px solid;
+            border-color: #808080 #dfdfdf #dfdfdf #808080;
+            padding: 2px 4px;
+            background: #c0c0c0;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 class="section-title">Windows 95/98 Style UI Elements</h1>
+
+        <!-- Example Dialog Window -->
+        <div class="window">
+            <div class="titlebar">
+                <div class="titlebar-text">📁 File Properties</div>
+                <div class="window-buttons">
+                    <button class="window-button">_</button>
+                    <button class="window-button">□</button>
+                    <button class="window-button">×</button>
+                </div>
+            </div>
+            <div class="menubar">
+                <div class="menu-item">File</div>
+                <div class="menu-item">Edit</div>
+                <div class="menu-item">View</div>
+                <div class="menu-item">Help</div>
+            </div>
+            <div class="window-content">
+                <p style="margin-bottom: 10px;"><strong>Filename:</strong></p>
+                <input type="text" class="input-field" value="document.txt" readonly>
+
+                <p style="margin-bottom: 10px;"><strong>File Type:</strong></p>
+                <input type="text" class="input-field" value="Text Document" readonly>
+
+                <p style="margin-bottom: 10px;"><strong>Attributes:</strong></p>
+                <div class="checkbox">
+                    <div class="checkbox-box checked"></div>
+                    <label>Read-only</label>
+                </div>
+                <div class="checkbox">
+                    <div class="checkbox-box"></div>
+                    <label>Hidden</label>
+                </div>
+                <div class="checkbox">
+                    <div class="checkbox-box"></div>
+                    <label>Archive</label>
+                </div>
+
+                <div class="separator"></div>
+
+                <p style="margin-bottom: 10px;"><strong>View as:</strong></p>
+                <div class="radiobutton">
+                    <div class="radio-circle selected"></div>
+                    <label>Large Icons</label>
+                </div>
+                <div class="radiobutton">
+                    <div class="radio-circle"></div>
+                    <label>Small Icons</label>
+                </div>
+                <div class="radiobutton">
+                    <div class="radio-circle"></div>
+                    <label>List View</label>
+                </div>
+                <div class="radiobutton">
+                    <div class="radio-circle"></div>
+                    <label>Details</label>
+                </div>
+
+                <div class="button-group">
+                    <button class="button">Apply</button>
+                    <button class="button">OK</button>
+                    <button class="button">Cancel</button>
+                </div>
+            </div>
+            <div class="status-bar">
+                <div class="status-item">Ready</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Button Styles</h2>
+        <div style="background: #c0c0c0; padding: 20px; max-width: 500px; border: 2px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+            <button class="button">Standard Button</button>
+            <button class="button">Disabled Button</button>
+            <button class="button">✓ OK Button</button>
+            <button class="button">✕ Cancel</button>
+        </div>
+    </div>
+</body>
+</html>
